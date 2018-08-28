@@ -37,10 +37,9 @@ func main() {
 	// basic authentication endpoints
 	{
 		basicAuth := api.Group("/")
-		basicAuth.Use(AuthenticationRequired("subscriber"))
+		basicAuth.Use(AuthenticationRequired())
 		{
 			basicAuth.GET("/logout", logoutHandler)
-			basicAuth.GET("/subscriber/message/:msg", subscriberMessageHandler)
 		}
 	}
 	// admin authentication endpoints
@@ -49,6 +48,14 @@ func main() {
 		adminAuth.Use(AuthenticationRequired("admin"))
 		{
 			adminAuth.GET("/message/:msg", adminMessageHandler)
+		}
+	}
+	// subscriber authentication endpoints
+	{
+		subscriberAuth := api.Group("/")
+		subscriberAuth.Use(AuthenticationRequired("subscriber"))
+		{
+			subscriberAuth.GET("/subscriber/message/:msg", subscriberMessageHandler)
 		}
 	}
 
