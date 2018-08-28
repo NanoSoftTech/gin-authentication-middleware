@@ -1,13 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/thoas/go-funk"
-	"fmt"
 )
 
 // Note: This is just an example for a tutorial
