@@ -3,9 +3,9 @@ package main
 import (
 	"net/http"
 
-	"github.com/thoas/go-funk"
-	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/contrib/sessions"
+	"github.com/gin-gonic/gin"
+	"github.com/thoas/go-funk"
 )
 
 func AuthenticationRequired(auths ...string) gin.HandlerFunc {
@@ -25,6 +25,9 @@ func AuthenticationRequired(auths ...string) gin.HandlerFunc {
 				return
 			}
 		}
+		// add session verification here, like checking if the user and authType
+		// combination actually exists if necessary. Try adding caching this (redis)
+		// since this middleware might be called a lot
 		c.Next()
 	}
 }

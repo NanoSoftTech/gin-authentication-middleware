@@ -12,7 +12,7 @@ import (
 
 // Note: This is just an example for a tutorial
 
-var(
+var (
 	VALID_AUTHENTICATIONS  = []string{"user", "admin", "subscriber"}
 )
 
